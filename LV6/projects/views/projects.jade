@@ -1,0 +1,40 @@
+doctype html
+html
+head
+    meta(http-equiv="content-type", content="#{contentType}; charset=UTF-8")
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+body
+    include menu
+    hr
+    each project in projects
+        div(class="project")
+            h1 Project name:
+            p= project.name
+            h4 Project description:
+            p= project.desc
+            h4 Project price:
+            p= project.cost
+            h4 Project tasks:
+            p= project.tasks
+            h4 Project start date:
+            p= project.date_start
+            h4 Project end date:
+            p= project.date_finish
+            h4 Project members:
+            p
+                if (project.users)
+                    each username in project.users
+                        span= username
+                else
+                    span N/A
+            h4 Add new user
+            form(action="/addMember", method="post") 
+                label(for="username") New user username:
+                input(type="text", name="username" placeholder="Username")
+                button(type="submit" name="project_id" value="#{project.id}") Add
+            h4 Actions
+            form(action="/delete", method="post")
+                button(type="submit" name="delete" value="#{project.id}") Delete project
+            h4 
+            hr

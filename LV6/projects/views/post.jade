@@ -1,0 +1,32 @@
+doctype html
+html
+	head
+		meta(http-equiv="content-type", content="#{contentType}; charset=UTF-8")
+		title= title
+		link(rel='stylesheet', href='/stylesheets/style.css')
+	body
+	a(href="/") Index 
+	h1 Use this form to add a new project
+	include message
+	form(action='/post',method='post')
+		div(class="form-input")
+			label(for="name") Project name:
+			input(type='text',name='name',placeholder='Project names')
+		div(class="form-input")
+			label(for="desc") Project description:
+			textarea(name='desc',placeholder='Description')
+		div(class="form-input")
+			label(for="cost") Project price:
+			input(type="text", name="Price")
+		div(class="form-input")
+			label(for="tasks") Completed project tasks:
+			textarea(name='tasks',placeholder='Completed tasks')
+		div(class="form-input")
+			label(for="date_start") Project start date:
+			input(type="date", name="date_start")
+		div(class="form-input")
+			label(for="date_finish") Project end date
+			input(type="date", name="date_finish") 
+		div(class="form-input")
+			button(type="submit") Submit
+			
