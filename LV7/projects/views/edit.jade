@@ -1,0 +1,52 @@
+doctype html
+html
+head
+    meta(http-equiv="content-type", content="#{contentType}; charset=UTF-8")
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+body
+    include menu
+    hr
+    if(full_edit == "yes")
+        form(action='/changeProject',method='post')
+            input(type="hidden", name="id", value="#{data.id}")
+            div(class="form-input")
+                label(for="name") Project name:
+                input(type='text',name='name',placeholder='Project name',value="#{data.name}")
+            div(class="form-input")
+                label(for="desc") Project description:
+                textarea(name='desc',placeholder='project description')= data.desc
+            div(class="form-input")
+                label(for="cost") Project price:
+                input(type="text", name="project price",value="#{data.desc}")
+            div(class="form-input")
+                label(for="tasks") Completed project tasks:
+                textarea(name='tasks',placeholder='completed tasks')= data.tasks
+            div(class="form-input")
+                label(for="date_start") Project start date:
+                input(type="date", name="date_start", value="#{data.date_start}")
+            div(class="form-input")
+                label(for="date_finish") Project end date:
+                input(type="date", name="date_finish", value="#{data.date_finish}") 
+            div(class="form-input")
+                button(type="submit") Submit
+    else
+        form(action='/changeProject',method='post')
+            input(type="hidden", name="id", value="#{data.id}")
+            h2 Project name:
+            p= data.name
+            h4 Team leader name:
+            p= data.creator_name
+            h4 Project description:
+            p= data.desc
+            h4 Project price:
+            p= data.cost
+            h4 Project tasks:
+            div(class="form-input")
+                label(for="tasks") Completed project tasks:
+                textarea(name='tasks',placeholder='completed tasks')= data.tasks
+            p= data.date_start
+            h4 Project finish date:
+            p= data.date_finish
+            div(class="form-input")
+                button(type="submit") Submit

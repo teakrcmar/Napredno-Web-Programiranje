@@ -1,0 +1,19 @@
+if locals.user
+	div#menu
+		p
+			span(class=name)= user.name
+		p
+			a(href='/')  Index
+		p
+			a(href='/post')  Add new project
+		p
+			a(href="/projects") See projects
+		p
+			a(href='/logout')  Sign out
+else
+	div#menu
+		p
+			a(href='/login')  Login
+		p
+			a(href='/register')  Register
+			
